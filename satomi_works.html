@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WORKS — SATOMI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --black:      #0a0a0a;
+      --gold:       #B8962E;
+      --gold-light: #d4af5a;
+      --burgundy:   #6B1E2E;
+      --parchment:  #E8E0D0;
+      --parchment-dark: #d5c9b5;
+      --white:      #faf8f4;
+      --text-main:  #1a1a1a;
+      --text-muted: #6b6055;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--parchment);
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 200;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 52px;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0) 100%);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      color: var(--parchment);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 42px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      color: var(--parchment);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      opacity: 1;
+      color: var(--gold);
+    }
+
+    /* ─── HERO ─── */
+    .works-hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* 左：画像パネル */
+    .hero-image-panel {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      /* ★ 写真差し替え：このimgタグのsrc属性を変更してください */
+      filter: brightness(0.88) saturate(1.05);
+      transition: transform 8s ease;
+    }
+
+    .works-hero:hover .hero-image-panel img {
+      transform: scale(1.03);
+    }
+
+    /* 金線のアクセント */
+    .hero-image-panel::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent, var(--gold) 30%, var(--gold) 70%, transparent);
+      opacity: 0.5;
+    }
+
+    /* 右：テキストパネル */
+    .hero-text-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 72px 80px 80px;
+      background: var(--black);
+      position: relative;
+    }
+
+    .hero-text-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(ellipse at 80% 20%, rgba(184,150,46,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .works-eyebrow {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.3s forwards;
+    }
+
+    .works-title-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 6vw, 5.5rem);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      color: var(--parchment);
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.5s forwards;
+    }
+
+    .works-title-ja {
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      color: var(--parchment);
+      opacity: 0;
+      margin-bottom: 52px;
+      animation: fadeUp 1s ease 0.7s forwards;
+    }
+
+    .gold-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.8s forwards;
+    }
+
+    .works-desc {
+      font-size: 0.82rem;
+      line-height: 2.2;
+      letter-spacing: 0.08em;
+      color: rgba(232,224,208,0.75);
+      max-width: 340px;
+      opacity: 0;
+      animation: fadeUp 1s ease 1s forwards;
+    }
+
+    /* ─── CATEGORY NAV ─── */
+    .category-nav {
+      background: var(--black);
+      border-top: 1px solid rgba(184,150,46,0.2);
+      border-bottom: 1px solid rgba(184,150,46,0.2);
+      display: flex;
+      justify-content: center;
+      gap: 0;
+    }
+
+    .cat-btn {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(232,224,208,0.5);
+      background: none;
+      border: none;
+      border-right: 1px solid rgba(184,150,46,0.15);
+      padding: 22px 44px;
+      cursor: pointer;
+      transition: color 0.3s, background 0.3s;
+      position: relative;
+    }
+
+    .cat-btn:first-child {
+      border-left: 1px solid rgba(184,150,46,0.15);
+    }
+
+    .cat-btn::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width 0.4s ease;
+    }
+
+    .cat-btn:hover,
+    .cat-btn.active {
+      color: var(--gold);
+      background: rgba(184,150,46,0.04);
+    }
+
+    .cat-btn:hover::after,
+    .cat-btn.active::after {
+      width: 30px;
+    }
+
+    /* ─── FEATURE WORK（パンジー メイン） ─── */
+    .feature-section {
+      padding: 100px 72px;
+      background: var(--black);
+    }
+
+    .section-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 60px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(184,150,46,0.4), transparent);
+    }
+
+    /* フィーチャーカード */
+    .feature-card {
+      display: grid;
+      grid-template-columns: 55% 1fr;
+      gap: 0;
+      background: #111;
+      border: 1px solid rgba(184,150,46,0.12);
+      overflow: hidden;
+      max-width: 1200px;
+      margin: 0 auto;
+      transition: border-color 0.4s;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(184,150,46,0.35);
+    }
+
+    .feature-img-wrap {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+    }
+
+    .feature-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+      /* ★ 写真差し替え：src属性を images/IMG_6693.jpg に変更してください */
+      transition: transform 0.8s ease;
+      filter: brightness(0.9);
+    }
+
+    .feature-card:hover .feature-img-wrap img {
+      transform: scale(1.04);
+    }
+
+    .feature-badge {
+      position: absolute;
+      top: 28px;
+      left: 28px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      color: var(--black);
+      background: var(--gold);
+      padding: 6px 14px;
+      text-transform: uppercase;
+    }
+
+    .feature-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 64px 56px;
+      background: #0e0e0e;
+    }
+
+    .work-category {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .work-title-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: var(--parchment);
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .work-title-ja {
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      color: rgba(232,224,208,0.5);
+      margin-bottom: 40px;
+    }
+
+    .work-meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px 16px;
+      margin-bottom: 44px;
+    }
+
+    .meta-item {}
+
+    .meta-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .meta-value {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: rgba(232,224,208,0.7);
+      line-height: 1.7;
+    }
+
+    .work-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(184,150,46,0.15);
+      margin-bottom: 44px;
+    }
+
+    .work-desc {
+      font-size: 0.78rem;
+      line-height: 2.3;
+      letter-spacing: 0.06em;
+      color: rgba(232,224,208,0.65);
+    }
+
+    /* ─── ギャラリーグリッド ─── */
+    .gallery-section {
+      padding: 80px 72px 120px;
+      background: var(--black);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: #111;
+      cursor: pointer;
+    }
+
+    .gallery-item img,
+    .gallery-placeholder {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease, filter 0.5s ease;
+      filter: brightness(0.75);
+    }
+
+    /* ★ プレースホルダー（写真未配置の枠） */
+    .gallery-placeholder {
+      background: #151515;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .placeholder-icon {
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(184,150,46,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .placeholder-icon::before {
+      content: '+';
+      color: rgba(184,150,46,0.4);
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    .placeholder-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      color: rgba(184,150,46,0.3);
+      text-transform: uppercase;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+      filter: brightness(0.55);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 28px;
+      background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, transparent 50%);
+      opacity: 1;
+    }
+
+    .overlay-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      color: var(--parchment);
+      text-align: center;
+      margin-bottom: 4px;
+    }
+
+    .overlay-sub {
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      color: rgba(232,224,208,0.55);
+      text-align: center;
+    }
+
+    /* ─── CTA ─── */
+    .works-cta {
+      padding: 100px 72px;
+      background: #080808;
+      text-align: center;
+      border-top: 1px solid rgba(184,150,46,0.1);
+    }
+
+    .cta-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .cta-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--parchment);
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+
+    .cta-ja {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      color: rgba(232,224,208,0.5);
+      margin-bottom: 52px;
+    }
+
+    .btn-contact {
+      display: inline-block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border: 1px solid rgba(184,150,46,0.4);
+      padding: 16px 48px;
+      transition: background 0.4s, color 0.4s, border-color 0.4s;
+    }
+
+    .btn-contact:hover {
+      background: var(--gold);
+      color: var(--black);
+      border-color: var(--gold);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 48px 72px;
+      background: var(--black);
+      border-top: 1px solid rgba(184,150,46,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.25em;
+      color: var(--parchment);
+      opacity: 0.6;
+    }
+
+    .footer-copy {
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      color: rgba(232,224,208,0.3);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 24px 28px; }
+      .nav-links { gap: 24px; }
+
+      .works-hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-image-panel {
+        height: 60vw;
+        min-height: 320px;
+      }
+
+      .hero-text-panel {
+        padding: 60px 28px;
+      }
+
+      .feature-card {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-info {
+        padding: 40px 28px;
+      }
+
+      .feature-section,
+      .gallery-section,
+      .works-cta {
+        padding-left: 28px;
+        padding-right: 28px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .cat-btn {
+        padding: 18px 20px;
+        font-size: 0.65rem;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 16px;
+        padding: 36px 28px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="satomi_index.html" class="nav-logo">SATOMI</a>
+    <ul class="nav-links">
+      <li><a href="satomi_index.html">Top</a></li>
+      <li><a href="satomi_works.html" class="active">Works</a></li>
+      <li><a href="satomi_about.html">About</a></li>
+      <li><a href="satomi_process.html">Process</a></li>
+      <li><a href="satomi_contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="works-hero">
+
+    <!-- 左：画像 -->
+    <div class="hero-image-panel">
+      <!-- ★ ヒーロー画像差し替え：src="images/あなたのファイル名.jpg" に変更 -->
+      <img src="images/IMG_6693.jpg" alt="SATOMI 立体刺繍作品">
+    </div>
+
+    <!-- 右：テキスト -->
+    <div class="hero-text-panel">
+      <p class="works-eyebrow">Gallery of Works</p>
+      <h1 class="works-title-en">WORKS</h1>
+      <p class="works-title-ja">作品集</p>
+      <div class="gold-rule"></div>
+      <p class="works-desc">
+        針と糸が、花びらになる。<br>
+        一針ずつ積み重ねた時間が、<br>
+        立体となって息を吹き込まれる。<br><br>
+        すべての作品は、<br>
+        世界にひとつだけの手仕事です。
+      </p>
+    </div>
+  </section>
+
+  <!-- CATEGORY NAV -->
+  <nav class="category-nav" aria-label="カテゴリー">
+    <button class="cat-btn active" onclick="filterWorks('all')">All</button>
+    <button class="cat-btn" onclick="filterWorks('pansy')">Pansy</button>
+    <button class="cat-btn" onclick="filterWorks('sakura')">Sakura</button>
+    <button class="cat-btn" onclick="filterWorks('rose')">Rose</button>
+    <button class="cat-btn" onclick="filterWorks('frame')">Frame</button>
+  </nav>
+
+  <!-- FEATURE WORK -->
+  <section class="feature-section">
+    <p class="section-label reveal">Featured Work</p>
+
+    <div class="feature-card reveal">
+
+      <!-- ★ メイン写真 -->
+      <div class="feature-img-wrap">
+        <img src="images/IMG_6693.jpg" alt="パンジーのカゴバッグ — SATOMI立体刺繍">
+        <span class="feature-badge">New Work</span>
+      </div>
+
+      <div class="feature-info">
+        <p class="work-category">Pansy — カゴバッグ</p>
+        <h2 class="work-title-en">Pansy<br>Basket Bag</h2>
+        <p class="work-title-ja">パンジーのカゴバッグ</p>
+
+        <div class="work-meta-grid">
+          <div class="meta-item">
+            <p class="meta-label">Technique</p>
+            <p class="meta-value">立体刺繍<br>スタンプワーク</p>
+          </div>
+          <div class="meta-item">
+            <p class="meta-label">Material</p>
+            <p class="meta-value">シルク糸<br>天然籐カゴ</p>
+          </div>
+          <div class="meta-item">
+            <p class="meta-label">Scale</p>
+            <p class="meta-value">パンジー 約20輪<br>フルハンドメイド</p>
+          </div>
+          <div class="meta-item">
+            <p class="meta-label">Status</p>
+            <p class="meta-value">受注制作<br>ご相談承ります</p>
+          </div>
+        </div>
+
+        <div class="work-divider"></div>
+
+        <p class="work-desc">
+          白、黄、紫——花びらのグラデーションは、<br>
+          自然そのものを手の中に宿したかのよう。<br><br>
+          ひと針ひと針に込められた時間が、<br>
+          カゴの縁を、春の庭に変えていく。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY GRID -->
+  <section class="gallery-section">
+    <p class="section-label reveal">All Works</p>
+
+    <div class="gallery-grid">
+
+      <!-- 作品1：パンジー（写真あり） -->
+      <div class="gallery-item reveal">
+        <!-- ★ 写真差し替え：src="images/IMG_6693.jpg" -->
+        <img src="images/IMG_6693.jpg" alt="パンジーのカゴバッグ">
+        <div class="gallery-overlay">
+          <p class="overlay-title">Pansy Basket Bag</p>
+          <p class="overlay-sub">パンジーのカゴバッグ</p>
+        </div>
+      </div>
+
+      <!-- 作品2：桜（一輪挿し） -->
+<div class="gallery-item reveal">
+    <img src="images/IMG_6681.jpg" alt="桜の立体刺繍 — 一輪挿し" class="gallery-img">
+    <div class="gallery-overlay">
+        <p class="overlay-title">Sakura Work</p>
+        <p class="overlay-sub">桜の刺繍</p>
+    </div>
+</div>
+
+      <!-- 作品3：バラ（写真未配置） -->
+      <div class="gallery-item reveal">
+        <!-- ★ 写真差し替え：src="images/あなたのバラの写真.jpg" -->
+        <div class="gallery-placeholder">
+          <div class="placeholder-icon"></div>
+          <p class="placeholder-text">Rose — 写真準備中</p>
+        </div>
+        <div class="gallery-overlay">
+          <p class="overlay-title">Rose Work</p>
+          <p class="overlay-sub">バラの刺繍</p>
+        </div>
+      </div>
+
+      <!-- 作品4：額縁（写真未配置） -->
+      <div class="gallery-item reveal">
+        <!-- ★ 写真差し替え：src="images/あなたの額縁の写真.jpg" -->
+        <div class="gallery-placeholder">
+          <div class="placeholder-icon"></div>
+          <p class="placeholder-text">Frame — 写真準備中</p>
+        </div>
+        <div class="gallery-overlay">
+          <p class="overlay-title">Framed Work</p>
+          <p class="overlay-sub">額縁の刺繍</p>
+        </div>
+      </div>
+
+      <!-- 作品5：追加枠 -->
+      <div class="gallery-item reveal">
+        <div class="gallery-placeholder">
+          <div class="placeholder-icon"></div>
+          <p class="placeholder-text">Coming Soon</p>
+        </div>
+        <div class="gallery-overlay">
+          <p class="overlay-title">New Work</p>
+          <p class="overlay-sub">準備中</p>
+        </div>
+      </div>
+
+      <!-- 作品6：追加枠 -->
+      <div class="gallery-item reveal">
+        <div class="gallery-placeholder">
+          <div class="placeholder-icon"></div>
+          <p class="placeholder-text">Coming Soon</p>
+        </div>
+        <div class="gallery-overlay">
+          <p class="overlay-title">New Work</p>
+          <p class="overlay-sub">準備中</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="works-cta reveal">
+    <p class="cta-sub">Private Commission</p>
+    <h2 class="cta-title">ご縁のある方へ</h2>
+    <p class="cta-ja">作品について、お問い合わせはこちらから</p>
+    <a href="satomi_contact.html" class="btn-contact">Contact</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-logo">SATOMI</p>
+    <p class="footer-copy">© 2025 SATOMI. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // ─── スクロールリビール ───
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, 80 * i);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // ─── カテゴリフィルター（シンプル版） ───
+    function filterWorks(cat) {
+      document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+      // 将来的に data-category 属性でフィルタリング実装可能
+    }
+  </script>
+
+</body>
+</html>
