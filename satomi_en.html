@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>En Rilievo NEJICO — Dimensional Embroidery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Zen+Old+Mincho:wght@400;700;900&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ivory:    #f5f0e8;
+      --parchment:#ede5d5;
+      --ash:      #c8bfb0;
+      --mist:     #8a8278;
+      --ink:      #2a2520;
+      --deep:     #1a1612;
+      --gold:     #b89a6a;
+      --gold-lt:  #d4b98a;
+      --blush:    #d4a8a0;
+      --sage:     #8a9e8a;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ivory);
+      color: var(--ink);
+      font-family: 'EB Garamond', serif;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.045'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.6;
+    }
+
+    header {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 2rem 4rem;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 300;
+      letter-spacing: 0.35em;
+      color: var(--ivory);
+      text-transform: uppercase;
+    }
+
+    nav { display: flex; gap: 2.5rem; align-items: center; }
+
+    nav a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.4s;
+    }
+
+    nav a:hover { color: var(--ivory); }
+
+    .lang-switch {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      text-transform: uppercase;
+      border-left: 1px solid rgba(255,255,255,0.2);
+      padding-left: 2rem;
+      transition: color 0.4s;
+    }
+
+    .lang-switch:hover { color: var(--gold-lt); }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items: flex-end;
+      padding: 0 4rem 6rem;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      z-index: 0;
+      background: url('IMG_6693.jpg') center center / cover no-repeat;
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(20,16,12,0.75) 0%, rgba(20,16,12,0.2) 60%, rgba(20,16,12,0.4) 100%);
+    }
+
+    .hero-circle {
+      position: absolute;
+      top: 50%; right: 8%;
+      transform: translateY(-55%);
+      width: min(55vw, 620px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 1px solid rgba(184,154,106,0.3);
+      animation: rotate-slow 80s linear infinite;
+      z-index: 1;
+    }
+
+    .hero-circle::before {
+      content: '';
+      position: absolute; inset: 18px;
+      border-radius: 50%;
+      border: 1px solid rgba(184,154,106,0.18);
+    }
+
+    .hero-circle::after {
+      content: '';
+      position: absolute; inset: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(184,154,106,0.1);
+    }
+
+    @keyframes rotate-slow {
+      to { transform: translateY(-55%) rotate(360deg); }
+    }
+
+    .petal-deco {
+      position: absolute;
+      top: 50%; right: 8%;
+      transform: translateY(-55%);
+      width: min(55vw, 620px);
+      aspect-ratio: 1;
+      opacity: 0.3;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 560px;
+      animation: fadeUp 1.4s cubic-bezier(0.22,1,0.36,1) both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.45em;
+      color: var(--gold-lt);
+      text-transform: uppercase;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      font-weight: 300;
+      line-height: 1.15;
+      letter-spacing: 0.04em;
+      color: var(--ivory);
+      margin-bottom: 2.2rem;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85em;
+      color: var(--gold-lt);
+      display: block;
+      margin-top: 0.15em;
+    }
+
+    .hero-lead {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.02rem;
+      line-height: 2;
+      color: rgba(232,224,208,0.85);
+      max-width: 420px;
+      margin-bottom: 3.5rem;
+    }
+
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 1rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      text-decoration: none;
+      transition: gap 0.4s;
+    }
+
+    .hero-cta::after {
+      content: '';
+      display: block;
+      width: 48px; height: 1px;
+      background: var(--gold);
+      transition: width 0.4s;
+    }
+
+    .hero-cta:hover { gap: 1.6rem; }
+    .hero-cta:hover::after { width: 80px; }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      color: var(--ash);
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    .scroll-line {
+      width: 1px; height: 50px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scroll-drop 2s ease-in-out infinite;
+    }
+
+    @keyframes scroll-drop {
+      0%   { transform: scaleY(0); transform-origin: top; }
+      50%  { transform: scaleY(1); transform-origin: top; }
+      51%  { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--ash), transparent);
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 80vh;
+    }
+
+    .about-image-side {
+      position: relative;
+      overflow: hidden;
+      background: var(--parchment);
+    }
+
+    .about-image-placeholder {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(212,185,138,0.15) 0%, transparent 70%), var(--parchment);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .embroidery-svg { width: 60%; opacity: 0.35; }
+
+    .about-text-side {
+      padding: 8rem 5rem 8rem 6rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+
+    .section-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.5em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+
+    .about-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.4;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      margin-bottom: 2.5rem;
+    }
+
+    .about-body {
+      font-size: 0.98rem;
+      line-height: 2.1;
+      color: var(--mist);
+      max-width: 400px;
+    }
+
+    .about-body p + p { margin-top: 1.4rem; }
+
+    .gold-rule {
+      width: 36px; height: 1px;
+      background: var(--gold);
+      margin: 3rem 0;
+    }
+
+    .about-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--gold);
+      line-height: 1.8;
+      max-width: 340px;
+    }
+
+    .works {
+      padding: 8rem 4rem;
+      background: var(--deep);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .works::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 80% 50%, rgba(184,154,106,0.06) 0%, transparent 60%);
+    }
+
+    .works-header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      margin-bottom: 5rem;
+    }
+
+    .works-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      font-weight: 300;
+      color: var(--ivory);
+      letter-spacing: 0.06em;
+    }
+
+    .works-title .en {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.55em;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+    }
+
+    .works-note {
+      font-size: 0.82rem;
+      color: var(--ash);
+      line-height: 1.9;
+      max-width: 260px;
+      text-align: right;
+    }
+
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+    }
+
+    .work-card {
+      position: relative;
+      aspect-ratio: 3/4;
+      background: #2a2520;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .work-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .work-card-inner {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .work-card:nth-child(1) .work-card-inner { background: linear-gradient(135deg,#2e2720 0%,#3a2e28 100%); }
+    .work-card:nth-child(2) .work-card-inner { background: linear-gradient(135deg,#28272a 0%,#322e38 100%); }
+    .work-card:nth-child(3) .work-card-inner { background: linear-gradient(135deg,#272a27 0%,#2e3828 100%); }
+
+    .work-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(20,16,12,0.85) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.5s;
+      display: flex; align-items: flex-end;
+      padding: 2rem;
+    }
+
+    .work-card:hover .work-card-overlay { opacity: 1; }
+
+    .work-card-info { color: var(--ivory); }
+    .work-card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-style: italic;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.3rem;
+    }
+    .work-card-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      color: var(--gold-lt);
+      text-transform: uppercase;
+    }
+
+    .work-icon { width: 80px; opacity: 0.12; }
+
+    .philosophy {
+      padding: 10rem 4rem;
+      background: var(--parchment);
+      text-align: center;
+      position: relative;
+    }
+
+    .philosophy-deco {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      border: 1px solid rgba(184,154,106,0.12);
+      pointer-events: none;
+    }
+
+    .philosophy-deco::before {
+      content: '';
+      position: absolute; inset: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(184,154,106,0.07);
+    }
+
+    .philosophy-inner {
+      position: relative; z-index: 2;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .philosophy-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.55em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+    }
+
+    .philosophy-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 2;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      margin-bottom: 3.5rem;
+    }
+
+    .philosophy-sub {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--mist);
+    }
+
+    .contact {
+      padding: 8rem 4rem;
+      background: var(--ivory);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .contact-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.6;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      margin-bottom: 2rem;
+    }
+
+    .contact-body {
+      font-size: 0.95rem;
+      line-height: 2.1;
+      color: var(--mist);
+      margin-bottom: 3rem;
+    }
+
+    .contact-note {
+      display: flex; align-items: center; gap: 1rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--ash);
+    }
+
+    .contact-note::before {
+      content: '';
+      display: block;
+      width: 28px; height: 1px;
+      background: var(--ash);
+    }
+
+    .contact-right {
+      padding: 4rem;
+      background: var(--parchment);
+      border: 1px solid rgba(184,154,106,0.15);
+    }
+
+    .contact-form-note {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2.5rem;
+    }
+
+    .form-row { margin-bottom: 1.8rem; }
+
+    .form-label {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--mist);
+      margin-bottom: 0.7rem;
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--ash);
+      padding: 0.7rem 0;
+      font-family: 'EB Garamond', serif;
+      font-size: 1rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus { border-bottom-color: var(--gold); }
+
+    .form-textarea { resize: none; height: 90px; }
+
+    .form-submit {
+      display: inline-flex; align-items: center; gap: 1rem;
+      margin-top: 2rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: gap 0.4s;
+    }
+
+    .form-submit::after {
+      content: '';
+      display: block;
+      width: 40px; height: 1px;
+      background: var(--gold);
+      transition: width 0.4s;
+    }
+
+    .form-submit:hover { gap: 1.6rem; }
+    .form-submit:hover::after { width: 70px; }
+
+    footer {
+      padding: 3rem 4rem;
+      background: var(--deep);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem;
+      font-weight: 300;
+      letter-spacing: 0.4em;
+      color: var(--ash);
+      text-transform: uppercase;
+    }
+
+    .footer-copy {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      color: var(--mist);
+    }
+
+    @media (max-width: 900px) {
+      header { padding: 1.5rem 2rem; }
+      nav { gap: 1.5rem; }
+      .hero { padding: 0 2rem 5rem; }
+      .about { grid-template-columns: 1fr; }
+      .about-image-side { min-height: 50vw; }
+      .about-text-side { padding: 4rem 2rem; }
+      .works { padding: 6rem 2rem; }
+      .works-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact { grid-template-columns: 1fr; gap: 3rem; padding: 6rem 2rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">En Rilievo Nejico</div>
+    <nav>
+      <a href="#works">Works</a>
+      <a href="#philosophy">Philosophy</a>
+      <a href="#contact">Enquiry</a>
+      <a href="satomi_index.html" class="lang-switch">日本語</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-circle"></div>
+    <svg class="petal-deco" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke="#b89a6a" stroke-width="0.5">
+        <ellipse cx="200" cy="140" rx="32" ry="62" transform="rotate(0 200 200)"/>
+        <ellipse cx="200" cy="140" rx="32" ry="62" transform="rotate(72 200 200)"/>
+        <ellipse cx="200" cy="140" rx="32" ry="62" transform="rotate(144 200 200)"/>
+        <ellipse cx="200" cy="140" rx="32" ry="62" transform="rotate(216 200 200)"/>
+        <ellipse cx="200" cy="140" rx="32" ry="62" transform="rotate(288 200 200)"/>
+        <circle cx="200" cy="200" r="18"/>
+        <circle cx="200" cy="200" r="88" stroke-dasharray="4 8"/>
+        <circle cx="200" cy="200" r="150" stroke-dasharray="2 10" opacity="0.5"/>
+        <circle cx="200" cy="200" r="190" stroke-dasharray="1 12" opacity="0.3"/>
+      </g>
+    </svg>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Dimensional Embroidery · Atelier</p>
+      <h1 class="hero-title">
+        A world held within<br>a single stitch.
+        <em>by Satomi</em>
+      </h1>
+      <p class="hero-lead">
+        Over a thousand stitches find their form.<br>
+        In every one of them,<br>
+        the work comes alive.
+      </p>
+      <a href="#works" class="hero-cta">View Works</a>
+    </div>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="about" id="about">
+    <div class="about-image-side">
+      <div class="about-image-placeholder">
+        <img src="IMG_7095.jpg" alt="Atelier — the moment needle and thread become a flower" style="width:100%; height:100%; object-fit:cover; display:block;">
+      </div>
+    </div>
+    <div class="about-text-side">
+      <p class="section-label">About · The Artist</p>
+      <h2 class="about-heading">Flowers in relief,<br>born from the fingertips.</h2>
+      <div class="about-body">
+        <p>Countless threads, layered across time, rising into bloom.</p>
+        <p>The time held within — that is the value no reproduction can carry.</p>
+      </div>
+      <div class="gold-rule"></div>
+      <p class="about-quote">"When the needle crosses the cloth,<br>time quietly stops."</p>
+    </div>
+  </section>
+
+  <section class="works" id="works">
+    <div class="works-header">
+      <h2 class="works-title">
+        <span class="en">Selected Works</span>
+        Collection
+      </h2>
+      <p class="works-note">Every piece is made entirely to order.<br>No ready-made works are offered.</p>
+    </div>
+    <div class="works-grid">
+      <div class="work-card">
+        <img src="IMG_7092.jpg" alt="Sakura — Dimensional Embroidery" class="work-card-img">
+        <div class="work-card-overlay">
+          <div class="work-card-info">
+            <div class="work-card-name">Sakura</div>
+            <div class="work-card-sub">Dimensional · Silk thread</div>
+          </div>
+        </div>
+      </div>
+      <div class="work-card">
+        <img src="IMG_6693.jpg" alt="Pansy — Dimensional Embroidery" class="work-card-img">
+        <div class="work-card-overlay">
+          <div class="work-card-info">
+            <div class="work-card-name">Pansy</div>
+            <div class="work-card-sub">Dimensional · Cotton & silk</div>
+          </div>
+        </div>
+      </div>
+      <div class="work-card">
+        <img src="IMG_6759.jpg" alt="Rose — Dimensional Embroidery" class="work-card-img">
+        <div class="work-card-overlay">
+          <div class="work-card-info">
+            <div class="work-card-name">Rose</div>
+            <div class="work-card-sub">Dimensional · Silk thread</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="philosophy" id="philosophy">
+    <div class="philosophy-deco"></div>
+    <div class="philosophy-inner">
+      <p class="philosophy-en">Philosophy</p>
+      <p class="philosophy-text">Only the accumulation of stitches<br>elevates the work.</p>
+      <p class="philosophy-sub">Not emotion, but precision — that is what makes a piece real.</p>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="contact-left">
+      <p class="section-label">Enquiry · Contact</p>
+      <h2 class="contact-heading">Where every encounter<br>begins.</h2>
+      <p class="contact-body">Each piece by SATOMI is made entirely to order.<br>Only a few come into being each year.</p>
+      <p class="contact-note">By Appointment Only</p>
+    </div>
+    <div class="contact-right">
+      <p class="contact-form-note">Enquiry Form</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSd73wQex5kxYhELKeHWUrCIAdYAu3rJl5ZMa4c_uV6SgQK63Q/viewform?usp=publish-editor" target="_blank" class="form-submit" style="display:inline-block; text-decoration:none !important; margin-bottom:2rem; padding: 1rem 2.5rem; border: 1px solid #B8962E; color: #B8962E; letter-spacing: 0.15em; font-size: 0.8rem;">Open Enquiry Form</a>
+      <p class="contact-form-note" style="margin-top: 1rem;">or</p>
+      <p class="contact-body">
+        <a href="mailto:atelier.satomi.jp@gmail.com" style="color: #B8962E; text-decoration: none; letter-spacing: 0.05em;">atelier.satomi.jp@gmail.com</a>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">En Rilievo Nejico — Dimensional Embroidery</div>
+    <div class="footer-copy">© 2025 Satomi. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>
