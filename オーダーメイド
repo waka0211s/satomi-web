@@ -672,7 +672,7 @@
       <h2 class="about-heading">指先から生まれる、<br>立体の花。</h2>
       <div class="about-body">
         <p>無数の糸が重なり、時間を超えて花へと昇華する。</p>
-        <p>そこに込められた時間が、世界に一つだけの、かけがえのない付加価値となる。</p>
+        <p style="white-space: nowrap; font-size: 0.86rem;">そこに込められた時間が、世界に一つだけの、かけがえのない付加価値となる。</p>
       </div>
       <div class="gold-rule"></div>
       <p class="about-quote">"針が布を渡るとき、<br>時間が静かに止まる。"</p>
@@ -685,7 +685,7 @@
         <span class="en">Selected Works</span>
         作品集
       </h2>
-      <p class="works-note">すべての作品はオーダーメイドです。<br>既製品の販売は行っておりません。</p>
+      <p class="works-note">展示作品のご購入、<br>または同じ仕立てでの受注制作。</p>
     </div>
     <div class="works-grid">
       <div class="work-card">
@@ -730,7 +730,7 @@
     <div class="contact-left">
       <p class="section-label">Enquiry · お問い合わせ</p>
 <h2 class="contact-heading">作品との出会いは、<br>ここから。</h2>
-<p class="contact-body">En Rilievo NEJICOの作品はすべてオーダーメイドです。<br>年間に生まれる作品は、わずかです。</p>
+<p class="contact-body">En Rilievo NEJICOの作品を、そのままに。<br>あるいは同じ仕立てで、もう一度。<br>年間に生まれる数は、わずかです。</p>
 <p class="contact-note">BY APPOINTMENT ONLY</p>
     </div>
     <div class="contact-right">
