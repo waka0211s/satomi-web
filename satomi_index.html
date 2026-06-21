@@ -333,7 +333,7 @@
     .works-title .en {
       display: block;
       font-family: 'Cormorant Garamond', serif;
-      font-size: 0.55em;
+      font-size: 1.1rem;
       letter-spacing: 0.35em;
       color: var(--gold);
       margin-bottom: 0.6rem;
@@ -353,6 +353,52 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5px;
     }
+    .works-grid-secondary {
+  margin-top: 0;
+}
+
+.works-divider-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin: 5rem 0 2.5rem;
+}
+
+.works-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  font-family: 'Zen Old Mincho', serif;
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  letter-spacing: 0.1em;
+  color: var(--ivory);
+}
+
+.works-divider-note {
+  font-size: 0.82rem;
+  color: var(--ash);
+  line-height: 1.9;
+  max-width: 420px;
+  text-align: right;
+}
+
+.works-divider-note em {
+  display: block;
+  font-style: normal;
+  font-size: 1.05em;
+  letter-spacing: 0.08em;
+  color: var(--mist);
+}
+
+.works-divider .en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
 
     .work-card {
       position: relative;
@@ -404,6 +450,38 @@
     }
 
     .work-icon { width: 80px; opacity: 0.12; }
+    .work-card-feature {
+      grid-column: 1 / -1;
+      aspect-ratio: 21 / 9;
+    }
+
+    .work-card-feature .work-card-overlay {
+      opacity: 1;
+      background: linear-gradient(to top, rgba(20,16,12,0.9) 0%, rgba(20,16,12,0.1) 55%, transparent 100%);
+    }
+    .work-card-feature .work-card-img {
+  object-position: center 75%;
+}
+
+    .works-feature-note {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--ash);
+      text-align: center;
+      max-width: 480px;
+      margin: 2.5rem auto 0;
+    }
+
+    .works-feature-note em {
+      display: block;
+      font-style: normal;
+      font-size: 0.78em;
+      letter-spacing: 0.12em;
+      color: var(--mist);
+      margin-top: 0.8rem;
+    }
 
     .philosophy {
       padding: 10rem 4rem;
@@ -437,7 +515,7 @@
 
     .philosophy-en {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 0.68rem;
+      font-size: 1.1rem;
       letter-spacing: 0.55em;
       color: var(--gold);
       text-transform: uppercase;
@@ -715,6 +793,37 @@
         </div>
     </div>
 </div>
+</div>
+
+      <div class="works-divider-header">
+        <div class="works-divider">
+          <span class="en">Prelude</span>
+          序章
+        </div>
+        <p class="works-divider-note">ひと針ずつ生まれた花たちが、束の間、ここに集う。<br><em>Not for sale — a glimpse into the atelier</em></p>
+      </div>
+
+      <div class="works-grid works-grid-secondary">
+        <div class="work-card">
+          <img src="images/IMG_7602.jpg" alt="制作途中の薔薇たち" class="work-card-img">
+          <div class="work-card-overlay">
+            <div class="work-card-info">
+              <div class="work-card-name">静寂の息吹　Silent Breath</div>
+              <div class="work-card-sub">Atelier · Waiting to Bloom</div>
+            </div>
+          </div>
+        </div>
+        <div class="work-card">
+          <img src="images/IMG_7609.jpg" alt="バスケットに集うパンジーたち" class="work-card-img">
+          <div class="work-card-overlay">
+            <div class="work-card-info">
+              <div class="work-card-name">刻（とき）の結晶　Crystallized Time</div>
+              <div class="work-card-sub">Atelier · Waiting to Bloom</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="works-feature-note">凛とした工房の箱の中で、微かに呼吸をしながら息づく花々。</p>
   </section>
 
   <section class="philosophy" id="philosophy">
