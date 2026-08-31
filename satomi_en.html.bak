@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>En Rilievo NEJICO — 立体刺繍</title>
+  <title>En Rilievo NEJICO — Dimensional Embroidery</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Zen+Old+Mincho:wght@400;700;900&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
@@ -58,7 +58,7 @@
       text-transform: uppercase;
     }
 
-    nav { display: flex; gap: 2.5rem; }
+    nav { display: flex; gap: 2.5rem; align-items: center; }
 
     nav a {
       font-family: 'Cormorant Garamond', serif;
@@ -72,6 +72,21 @@
     }
 
     nav a:hover { color: var(--ivory); }
+
+    .lang-switch {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      text-transform: uppercase;
+      border-left: 1px solid rgba(255,255,255,0.2);
+      padding-left: 2rem;
+      transition: color 0.4s;
+    }
+
+    .lang-switch:hover { color: var(--gold-lt); }
 
     .hero {
       position: relative;
@@ -155,9 +170,9 @@
     }
 
     .hero-title {
-      font-family: 'Zen Old Mincho', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2.8rem, 6vw, 5.2rem);
-      font-weight: 400;
+      font-weight: 300;
       line-height: 1.15;
       letter-spacing: 0.04em;
       color: var(--ivory);
@@ -271,11 +286,12 @@
     }
 
     .about-heading {
-      font-family: 'Zen Old Mincho', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: clamp(1.8rem, 3vw, 2.6rem);
-      font-weight: 400;
-      line-height: 1.5;
-      letter-spacing: 0.05em;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.4;
+      letter-spacing: 0.02em;
       color: var(--ink);
       margin-bottom: 2.5rem;
     }
@@ -323,9 +339,9 @@
     }
 
     .works-title {
-      font-family: 'Zen Old Mincho', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: clamp(1.8rem, 3.5vw, 3rem);
-      font-weight: 400;
+      font-weight: 300;
       color: var(--ivory);
       letter-spacing: 0.06em;
     }
@@ -333,7 +349,7 @@
     .works-title .en {
       display: block;
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
+      font-size: 0.55em;
       letter-spacing: 0.35em;
       color: var(--gold);
       margin-bottom: 0.6rem;
@@ -353,52 +369,6 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5px;
     }
-    .works-grid-secondary {
-  margin-top: 0;
-}
-
-.works-divider-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin: 5rem 0 2.5rem;
-}
-
-.works-divider {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  font-family: 'Zen Old Mincho', serif;
-  font-size: clamp(1.8rem, 3.5vw, 3rem);
-  letter-spacing: 0.1em;
-  color: var(--ivory);
-}
-
-.works-divider-note {
-  font-size: 0.82rem;
-  color: var(--ash);
-  line-height: 1.9;
-  max-width: 420px;
-  text-align: right;
-}
-
-.works-divider-note em {
-  display: block;
-  font-style: normal;
-  font-size: 1.05em;
-  letter-spacing: 0.08em;
-  color: var(--mist);
-}
-
-.works-divider .en {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
-  letter-spacing: 0.35em;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-bottom: 0.6rem;
-}
 
     .work-card {
       position: relative;
@@ -407,12 +377,13 @@
       overflow: hidden;
       cursor: pointer;
     }
+
     .work-card-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
     .work-card-inner {
       position: absolute; inset: 0;
@@ -436,8 +407,9 @@
 
     .work-card-info { color: var(--ivory); }
     .work-card-name {
-      font-family: 'Zen Old Mincho', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: 1rem;
+      font-style: italic;
       letter-spacing: 0.08em;
       margin-bottom: 0.3rem;
     }
@@ -450,38 +422,6 @@
     }
 
     .work-icon { width: 80px; opacity: 0.12; }
-    .work-card-feature {
-      grid-column: 1 / -1;
-      aspect-ratio: 21 / 9;
-    }
-
-    .work-card-feature .work-card-overlay {
-      opacity: 1;
-      background: linear-gradient(to top, rgba(20,16,12,0.9) 0%, rgba(20,16,12,0.1) 55%, transparent 100%);
-    }
-    .work-card-feature .work-card-img {
-  object-position: center 75%;
-}
-
-    .works-feature-note {
-      font-family: 'EB Garamond', serif;
-      font-style: italic;
-      font-size: 1.05rem;
-      line-height: 1.9;
-      color: var(--ash);
-      text-align: center;
-      max-width: 480px;
-      margin: 2.5rem auto 0;
-    }
-
-    .works-feature-note em {
-      display: block;
-      font-style: normal;
-      font-size: 0.78em;
-      letter-spacing: 0.12em;
-      color: var(--mist);
-      margin-top: 0.8rem;
-    }
 
     .philosophy {
       padding: 10rem 4rem;
@@ -515,7 +455,7 @@
 
     .philosophy-en {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
+      font-size: 0.68rem;
       letter-spacing: 0.55em;
       color: var(--gold);
       text-transform: uppercase;
@@ -523,11 +463,12 @@
     }
 
     .philosophy-text {
-      font-family: 'Zen Old Mincho', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: clamp(1.5rem, 2.5vw, 2.2rem);
-      font-weight: 400;
+      font-weight: 300;
+      font-style: italic;
       line-height: 2;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.02em;
       color: var(--ink);
       margin-bottom: 3.5rem;
     }
@@ -550,11 +491,12 @@
     }
 
     .contact-heading {
-      font-family: 'Zen Old Mincho', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: clamp(1.6rem, 3vw, 2.4rem);
-      font-weight: 400;
+      font-weight: 300;
+      font-style: italic;
       line-height: 1.6;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.02em;
       color: var(--ink);
       margin-bottom: 2rem;
     }
@@ -754,12 +696,12 @@
 <body>
 
   <header>
-    <div class="logo">En Rilievo NEJICO</div>
+    <div class="logo">En Rilievo Nejico</div>
     <nav>
       <a href="#works">Works</a>
-      <a href="#philosophy">世界観</a>
-      <a href="#contact">お問い合わせ</a>
-      <a href="satomi_en.html" style="border-left: 1px solid rgba(255,255,255,0.2); padding-left: 2rem; color: rgba(255,255,255,0.75); letter-spacing: 0.25em; font-size: 0.72rem; font-family: 'Cormorant Garamond', serif; text-decoration: none; text-transform: uppercase;">EN</a>
+      <a href="#philosophy">Philosophy</a>
+      <a href="#contact">Enquiry</a>
+      <a href="satomi_index.html" class="lang-switch">日本語</a>
     </nav>
   </header>
 
@@ -782,15 +724,14 @@
     <div class="hero-content">
       <p class="hero-eyebrow">Dimensional Embroidery · Atelier</p>
       <h1 class="hero-title">
-        ひと針に<br>宿る、世界。
+        A world held within<br>a single stitch.
         <em>by En Rilievo NEJICO</em>
       </h1>
       <p class="hero-lead">
-        千を越えるひと針が、形を成す。<br>
-        そのすべての瞬間に、<br>
-        作品としての命が宿る。
+        Over a thousand stitches find their form.<br>
+        In every one of them,the work comes alive.
       </p>
-      <a href="#works" class="hero-cta">作品を見る</a>
+      <a href="#works" class="hero-cta">View Works</a>
     </div>
     <div class="scroll-hint">
       <span>Scroll</span>
@@ -803,18 +744,18 @@
   <section class="about" id="about">
     <div class="about-image-side">
       <div class="about-image-placeholder">
-  <img src="IMG_7095.jpg" alt="制作風景 — 針と糸が花になる瞬間" style="width:100%; height:100%; object-fit:cover; display:block;">
-</div>
+        <img src="IMG_7095.jpg" alt="Atelier — the moment needle and thread become a flower" style="width:100%; height:100%; object-fit:cover; display:block;">
+      </div>
     </div>
     <div class="about-text-side">
-      <p class="section-label">About · 作家について</p>
-      <h2 class="about-heading">指先から生まれる、<br>立体の花。</h2>
+      <p class="section-label">About · The Artist</p>
+      <h2 class="about-heading">Flowers in relief,<br>born from the fingertips.</h2>
       <div class="about-body">
-        <p>無数の糸が重なり、時間を超えて花へと昇華する。</p>
-        <p style="white-space: nowrap; font-size: 0.86rem;">そこに込められた時間が、世界に一つだけの、かけがえのない付加価値となる。</p>
+        <p>Countless threads, layered across time, rising into bloom.</p>
+        <p style="white-space: nowrap; font-size: 0.86rem;">The time held within — that is the value no reproduction can carry.</p>
       </div>
       <div class="gold-rule"></div>
-      <p class="about-quote">"針が布を渡るとき、<br>時間が静かに止まる。"</p>
+      <p class="about-quote">"When the needle crosses the cloth,<br>time quietly stops."</p>
     </div>
   </section>
 
@@ -822,144 +763,84 @@
     <div class="works-header">
       <h2 class="works-title">
         <span class="en">Selected Works</span>
-        作品集
+        Collection
       </h2>
-      <p class="works-note">展示作品のご購入、<br>または同じ仕立てでの受注制作。</p>
+      <p class="works-note">The pieces shown, available to acquire.<br>Or remade, with the same hand.</p>
     </div>
     <div class="works-grid">
       <div class="work-card">
-    <img src="IMG_7092.jpg" alt="桜の立体刺繍" class="work-card-img">
-    <div class="work-card-overlay">
-        <div class="work-card-info">
-            <div class="work-card-name">桜　Sakura</div>
+        <img src="IMG_7092.jpg" alt="Sakura — Dimensional Embroidery" class="work-card-img">
+        <div class="work-card-overlay">
+          <div class="work-card-info">
+            <div class="work-card-name">Sakura</div>
             <div class="work-card-sub">Dimensional · Silk thread</div>
             <div class="work-card-sub" style="margin-top:0.3rem;">Not for sale</div>
+          </div>
         </div>
-    </div>
-</div>
+      </div>
       <div class="work-card">
-    <img src="IMG_6693.jpg" alt="パンジーのカゴバッグ" class="work-card-img">
-    <div class="work-card-overlay">
-        <div class="work-card-info">
-            <div class="work-card-name">パンジー　Pansy</div>
+        <img src="IMG_6693.jpg" alt="Pansy — Dimensional Embroidery" class="work-card-img">
+        <div class="work-card-overlay">
+          <div class="work-card-info">
+            <div class="work-card-name">Pansy</div>
             <div class="work-card-sub">Dimensional · Cotton & silk</div>
             <div class="work-card-sub" style="margin-top:0.3rem;">Not for sale</div>
+          </div>
         </div>
-    </div>
-</div>
+      </div>
       <div class="work-card">
-    <img src="IMG_6759.jpg" alt="薔薇の立体刺繍" class="work-card-img">
-    <div class="work-card-overlay">
-        <div class="work-card-info">
-            <div class="work-card-name">薔薇　Rose</div>
+        <img src="IMG_6759.jpg" alt="Rose — Dimensional Embroidery" class="work-card-img">
+        <div class="work-card-overlay">
+          <div class="work-card-info">
+            <div class="work-card-name">Rose</div>
             <div class="work-card-sub">Dimensional · Silk thread</div>
             <div class="work-card-sub" style="margin-top:0.3rem;">Not for sale</div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-</div>
-
-      
       <div class="piccolo-section">
         <div class="piccolo-header">
           <p class="piccolo-eyebrow">Piccolo Fiore</p>
-          <p class="piccolo-sub" style="font-family:'Zen Old Mincho', serif;">一輪、あるいは、ひとにぎりの花。</p>
+          <p class="piccolo-sub">A single bloom, or a handful.</p>
         </div>
         <div class="piccolo-grid">
           <!-- PICCOLO_FIORE_HERE -->
-          <div class="piccolo-card">
-            <img src="images/piccolo-margaret.jpg" alt="Margaret — Piccolo Fiore" class="piccolo-card-img">
-            <p class="piccolo-card-name">マーガレット　Margaret</p>
-          </div>
-          <div class="piccolo-card">
-            <img src="images/piccolo-orangerose.jpg" alt="OrangeRose — Piccolo Fiore" class="piccolo-card-img">
-            <p class="piccolo-card-name">薔薇　OrangeRose</p>
-          </div>
-          <div class="piccolo-card">
-            <img src="images/piccolo-rose2.jpg" alt="Rose2 — Piccolo Fiore" class="piccolo-card-img">
-            <p class="piccolo-card-name">薔薇　Rose2</p>
-          </div>
-          <div class="piccolo-card">
-            <img src="images/piccolo-rose.jpg" alt="Rose — Piccolo Fiore" class="piccolo-card-img">
-            <p class="piccolo-card-name">薔薇　Rose</p>
-          </div>
-          <div class="piccolo-card">
-            <img src="images/piccolo-sakura.jpg" alt="Sakura — Piccolo Fiore" class="piccolo-card-img">
-            <p class="piccolo-card-name">桜　Sakura</p>
-          </div>
-
         </div>
       </div>
 
-<div class="works-divider-header">
-        <div class="works-divider">
-          <span class="en">Prelude</span>
-          序章
-        </div>
-        <p class="works-divider-note">ひと針ずつ生まれた花たちが、束の間、ここに集う。<br><em>Not for sale — a glimpse into the atelier</em></p>
-      </div>
-
-      <div class="works-grid works-grid-secondary">
-        <div class="work-card">
-          <img src="images/IMG_7602.jpg" alt="制作途中の薔薇たち" class="work-card-img">
-          <div class="work-card-overlay">
-            <div class="work-card-info">
-              <div class="work-card-name">静寂の息吹　Silent Breath</div>
-              <div class="work-card-sub">Atelier · Waiting to Bloom</div>
-            </div>
-          </div>
-        </div>
-        <div class="work-card">
-          <img src="images/IMG_7609.jpg" alt="バスケットに集うパンジーたち" class="work-card-img">
-          <div class="work-card-overlay">
-            <div class="work-card-info">
-              <div class="work-card-name">刻の結晶　Crystallized Time</div>
-              <div class="work-card-sub">Atelier · Waiting to Bloom</div>
-            </div>
-          </div>
-        </div>
-        <div class="work-card">
-          <img src="images/IMG_7616.jpg" alt="フープに集う薔薇とパンジー" class="work-card-img">
-          <div class="work-card-overlay">
-            <div class="work-card-info">
-              <div class="work-card-name">色彩の源泉　Genesis of Colors</div>
-              <div class="work-card-sub">Atelier · Source of Creation</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <p class="works-feature-note">凛とした工房の箱の中で、微かに呼吸をしながら息づく花々。</p>
   </section>
 
   <section class="philosophy" id="philosophy">
     <div class="philosophy-deco"></div>
     <div class="philosophy-inner">
       <p class="philosophy-en">Philosophy</p>
-      <p class="philosophy-text">積み重なった針目だけが、<br>価値を高める。</p>
-      <p class="philosophy-sub">感情ではなく精度が、作品を本物にする。</p>
+      <p class="philosophy-text">Only the accumulation of stitches<br>elevates the work.</p>
+      <p class="philosophy-sub">Not emotion, but precision — that is what makes a piece real.</p>
     </div>
   </section>
 
   <section class="contact" id="contact">
     <div class="contact-left">
-      <p class="section-label">Enquiry · お問い合わせ</p>
-<h2 class="contact-heading">作品との出会いは、<br>ここから。</h2>
-<p class="contact-body">En Rilievo NEJICOの作品を、そのままに。<br>あるいは同じ仕立てで、もう一度。<br>年間に生まれる作品数は、わずかです。</p>
-<p class="contact-note">BY APPOINTMENT ONLY</p>
+      <p class="section-label">Enquiry · Contact</p>
+      <h2 class="contact-heading">Where every encounter begins.</h2>
+      <p class="contact-body">Each piece by En Rilievo NEJICO is made entirely to order.<br>Only a few come into being each year.</p>
+      <p class="contact-note">AS SEEN, OR MADE AGAIN</p>
     </div>
     <div class="contact-right">
-          <p class="contact-form-note">Enquiry Form</p>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSd73wQex5kxYhELKeHWUrCIAdYAu3rJl5ZMa4c_uV6SgQK63Q/viewform?usp=publish-editor" target="_blank" class="form-submit" style="display:inline-block; text-decoration:none !important; margin-bottom:2rem; padding: 1rem 2.5rem; border: 1px solid #B8962E; color: #B8962E; letter-spacing: 0.15em; font-size: 0.8rem;">お問い合わせフォームへ</a><p class="contact-form-note" style="margin-top: 1rem;">または</p>
-          <p class="contact-body">
-            <a href="mailto:atelier.satomi.jp@gmail.com" style="color: #B8962E; text-decoration: none; letter-spacing: 0.05em;">atelier.satomi.jp@gmail.com</a>
-          </p>
-        </div>
+      <p class="contact-form-note">Enquiry Form</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSd73wQex5kxYhELKeHWUrCIAdYAu3rJl5ZMa4c_uV6SgQK63Q/viewform?usp=publish-editor" target="_blank" class="form-submit" style="display:inline-block; text-decoration:none !important; margin-bottom:2rem; padding: 1rem 2.5rem; border: 1px solid #B8962E; color: #B8962E; letter-spacing: 0.15em; font-size: 0.8rem;">Open Enquiry Form</a>
+      <p class="contact-form-note" style="margin-top: 1rem;">or</p>
+      <p class="contact-body">
+        <a href="mailto:atelier.satomi.jp@gmail.com" style="color: #B8962E; text-decoration: none; letter-spacing: 0.05em;">atelier.satomi.jp@gmail.com</a>
+      </p>
+    </div>
   </section>
 
   <footer>
-    <div class="footer-logo">En Rilievo NEJICO — 立体刺繍</div>
+    <div class="footer-logo">En Rilievo Nejico — Dimensional Embroidery</div>
     <a class="footer-ig" href="https://www.instagram.com/en.rilievo.nejico/" target="_blank" rel="noopener">Instagram</a>
-    <div class="footer-copy">© 2025 En Rilievo NEJICO. All rights reserved.</div>
+    <div class="footer-copy">© 2025 Satomi. All rights reserved.</div>
   </footer>
 
 </body>

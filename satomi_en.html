@@ -643,6 +643,54 @@
       .contact { grid-template-columns: 1fr; gap: 3rem; padding: 6rem 2rem; }
       footer { flex-direction: column; gap: 1rem; text-align: center; }
     }
+  
+    .piccolo-section {
+      margin-top: 6rem;
+      padding-top: 5rem;
+      border-top: 1px solid rgba(184,150,46,0.15);
+    }
+    .piccolo-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .piccolo-eyebrow {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.3rem;
+      letter-spacing: 0.12em;
+      color: var(--gold-lt);
+    }
+    .piccolo-sub {
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      color: var(--ash);
+      margin-top: 0.6rem;
+    }
+    .piccolo-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.8rem;
+    }
+    .piccolo-card { text-align: center; }
+    .piccolo-card-img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 2px;
+      display: block;
+    }
+    .piccolo-card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--ash);
+      margin-top: 0.8rem;
+    }
+    @media (max-width: 900px) {
+      .piccolo-grid { grid-template-columns: repeat(2, 1fr); }
+    }
   </style>
 </head>
 <body>
@@ -751,6 +799,37 @@
         </div>
       </div>
     </div>
+      <div class="piccolo-section">
+        <div class="piccolo-header">
+          <p class="piccolo-eyebrow">Piccolo Fiore</p>
+          <p class="piccolo-sub">A single bloom, or a handful.</p>
+        </div>
+        <div class="piccolo-grid">
+          <!-- PICCOLO_FIORE_HERE -->
+          <div class="piccolo-card">
+            <img src="images/piccolo-margaret.jpg" alt="Margaret — Piccolo Fiore" class="piccolo-card-img">
+            <p class="piccolo-card-name">Margaret</p>
+          </div>
+          <div class="piccolo-card">
+            <img src="images/piccolo-orangerose.jpg" alt="OrangeRose — Piccolo Fiore" class="piccolo-card-img">
+            <p class="piccolo-card-name">OrangeRose</p>
+          </div>
+          <div class="piccolo-card">
+            <img src="images/piccolo-rose2.jpg" alt="Rose2 — Piccolo Fiore" class="piccolo-card-img">
+            <p class="piccolo-card-name">Rose2</p>
+          </div>
+          <div class="piccolo-card">
+            <img src="images/piccolo-rose.jpg" alt="Rose — Piccolo Fiore" class="piccolo-card-img">
+            <p class="piccolo-card-name">Rose</p>
+          </div>
+          <div class="piccolo-card">
+            <img src="images/piccolo-sakura.jpg" alt="Sakura — Piccolo Fiore" class="piccolo-card-img">
+            <p class="piccolo-card-name">Sakura</p>
+          </div>
+
+        </div>
+      </div>
+
   </section>
 
   <section class="philosophy" id="philosophy">

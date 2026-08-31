@@ -867,27 +867,6 @@
         </div>
         <div class="piccolo-grid">
           <!-- PICCOLO_FIORE_HERE -->
-          <div class="piccolo-card">
-            <img src="images/piccolo-margaret.jpg" alt="Margaret — Piccolo Fiore" class="piccolo-card-img">
-            <p class="piccolo-card-name">マーガレット　Margaret</p>
-          </div>
-          <div class="piccolo-card">
-            <img src="images/piccolo-orangerose.jpg" alt="OrangeRose — Piccolo Fiore" class="piccolo-card-img">
-            <p class="piccolo-card-name">薔薇　OrangeRose</p>
-          </div>
-          <div class="piccolo-card">
-            <img src="images/piccolo-rose2.jpg" alt="Rose2 — Piccolo Fiore" class="piccolo-card-img">
-            <p class="piccolo-card-name">薔薇　Rose2</p>
-          </div>
-          <div class="piccolo-card">
-            <img src="images/piccolo-rose.jpg" alt="Rose — Piccolo Fiore" class="piccolo-card-img">
-            <p class="piccolo-card-name">薔薇　Rose</p>
-          </div>
-          <div class="piccolo-card">
-            <img src="images/piccolo-sakura.jpg" alt="Sakura — Piccolo Fiore" class="piccolo-card-img">
-            <p class="piccolo-card-name">桜　Sakura</p>
-          </div>
-
         </div>
       </div>
 

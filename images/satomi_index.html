@@ -357,13 +357,6 @@
   margin-top: 0;
 }
 
-.works-divider-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin: 5rem 0 2.5rem;
-}
-
 .works-divider {
   display: flex;
   flex-direction: column;
@@ -373,22 +366,7 @@
   font-size: clamp(1.8rem, 3.5vw, 3rem);
   letter-spacing: 0.1em;
   color: var(--ivory);
-}
-
-.works-divider-note {
-  font-size: 0.82rem;
-  color: var(--ash);
-  line-height: 1.9;
-  max-width: 420px;
-  text-align: right;
-}
-
-.works-divider-note em {
-  display: block;
-  font-style: normal;
-  font-size: 1.05em;
-  letter-spacing: 0.08em;
-  color: var(--mist);
+  margin: 5rem 0 2.5rem;
 }
 
 .works-divider .en {
@@ -676,19 +654,6 @@
       color: var(--mist);
     }
 
-    .footer-ig {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.75rem;
-      font-weight: 300;
-      letter-spacing: 0.3em;
-      color: var(--ash);
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: color 0.4s;
-    }
-
-    .footer-ig:hover { color: var(--gold-lt); }
-
     @media (max-width: 900px) {
       header { padding: 1.5rem 2rem; }
       nav { gap: 1.5rem; }
@@ -700,54 +665,6 @@
       .works-grid { grid-template-columns: repeat(2, 1fr); }
       .contact { grid-template-columns: 1fr; gap: 3rem; padding: 6rem 2rem; }
       footer { flex-direction: column; gap: 1rem; text-align: center; }
-    }
-  
-    .piccolo-section {
-      margin-top: 6rem;
-      padding-top: 5rem;
-      border-top: 1px solid rgba(184,150,46,0.15);
-    }
-    .piccolo-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    .piccolo-eyebrow {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-weight: 300;
-      font-size: 1.3rem;
-      letter-spacing: 0.12em;
-      color: var(--gold-lt);
-    }
-    .piccolo-sub {
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
-      color: var(--ash);
-      margin-top: 0.6rem;
-    }
-    .piccolo-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.8rem;
-    }
-    .piccolo-card { text-align: center; }
-    .piccolo-card-img {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      border-radius: 2px;
-      display: block;
-    }
-    .piccolo-card-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
-      color: var(--ash);
-      margin-top: 0.8rem;
-    }
-    @media (max-width: 900px) {
-      .piccolo-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -833,7 +750,6 @@
         <div class="work-card-info">
             <div class="work-card-name">桜　Sakura</div>
             <div class="work-card-sub">Dimensional · Silk thread</div>
-            <div class="work-card-sub" style="margin-top:0.3rem;">Not for sale</div>
         </div>
     </div>
 </div>
@@ -843,7 +759,6 @@
         <div class="work-card-info">
             <div class="work-card-name">パンジー　Pansy</div>
             <div class="work-card-sub">Dimensional · Cotton & silk</div>
-            <div class="work-card-sub" style="margin-top:0.3rem;">Not for sale</div>
         </div>
     </div>
 </div>
@@ -853,50 +768,14 @@
         <div class="work-card-info">
             <div class="work-card-name">薔薇　Rose</div>
             <div class="work-card-sub">Dimensional · Silk thread</div>
-            <div class="work-card-sub" style="margin-top:0.3rem;">Not for sale</div>
         </div>
     </div>
 </div>
 </div>
 
-      
-      <div class="piccolo-section">
-        <div class="piccolo-header">
-          <p class="piccolo-eyebrow">Piccolo Fiore</p>
-          <p class="piccolo-sub" style="font-family:'Zen Old Mincho', serif;">一輪、あるいは、ひとにぎりの花。</p>
-        </div>
-        <div class="piccolo-grid">
-          <!-- PICCOLO_FIORE_HERE -->
-          <div class="piccolo-card">
-            <img src="images/piccolo-margaret.jpg" alt="Margaret — Piccolo Fiore" class="piccolo-card-img">
-            <p class="piccolo-card-name">マーガレット　Margaret</p>
-          </div>
-          <div class="piccolo-card">
-            <img src="images/piccolo-orangerose.jpg" alt="OrangeRose — Piccolo Fiore" class="piccolo-card-img">
-            <p class="piccolo-card-name">薔薇　OrangeRose</p>
-          </div>
-          <div class="piccolo-card">
-            <img src="images/piccolo-rose2.jpg" alt="Rose2 — Piccolo Fiore" class="piccolo-card-img">
-            <p class="piccolo-card-name">薔薇　Rose2</p>
-          </div>
-          <div class="piccolo-card">
-            <img src="images/piccolo-rose.jpg" alt="Rose — Piccolo Fiore" class="piccolo-card-img">
-            <p class="piccolo-card-name">薔薇　Rose</p>
-          </div>
-          <div class="piccolo-card">
-            <img src="images/piccolo-sakura.jpg" alt="Sakura — Piccolo Fiore" class="piccolo-card-img">
-            <p class="piccolo-card-name">桜　Sakura</p>
-          </div>
-
-        </div>
-      </div>
-
-<div class="works-divider-header">
-        <div class="works-divider">
-          <span class="en">Prelude</span>
-          序章
-        </div>
-        <p class="works-divider-note">ひと針ずつ生まれた花たちが、束の間、ここに集う。<br><em>Not for sale — a glimpse into the atelier</em></p>
+      <div class="works-divider">
+        <span class="en">Prelude</span>
+        序章
       </div>
 
       <div class="works-grid works-grid-secondary">
@@ -906,24 +785,6 @@
             <div class="work-card-info">
               <div class="work-card-name">静寂の息吹　Silent Breath</div>
               <div class="work-card-sub">Atelier · Waiting to Bloom</div>
-            </div>
-          </div>
-        </div>
-        <div class="work-card">
-          <img src="images/IMG_7609.jpg" alt="バスケットに集うパンジーたち" class="work-card-img">
-          <div class="work-card-overlay">
-            <div class="work-card-info">
-              <div class="work-card-name">刻の結晶　Crystallized Time</div>
-              <div class="work-card-sub">Atelier · Waiting to Bloom</div>
-            </div>
-          </div>
-        </div>
-        <div class="work-card">
-          <img src="images/IMG_7616.jpg" alt="フープに集う薔薇とパンジー" class="work-card-img">
-          <div class="work-card-overlay">
-            <div class="work-card-info">
-              <div class="work-card-name">色彩の源泉　Genesis of Colors</div>
-              <div class="work-card-sub">Atelier · Source of Creation</div>
             </div>
           </div>
         </div>
@@ -958,7 +819,6 @@
 
   <footer>
     <div class="footer-logo">En Rilievo NEJICO — 立体刺繍</div>
-    <a class="footer-ig" href="https://www.instagram.com/en.rilievo.nejico/" target="_blank" rel="noopener">Instagram</a>
     <div class="footer-copy">© 2025 En Rilievo NEJICO. All rights reserved.</div>
   </footer>
 

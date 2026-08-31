@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Invitation Template — En Rilievo NEJICO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet" />
+<style>
+  /*
+    ============================================================
+    En Rilievo NEJICO — カードテンプレート（招待状 / 完成作品カード共通）
+    ============================================================
+    サイズ: 148mm x 210mm（はがき比率）
+    使い方:
+      1. <!-- IMAGE_HERE --> を実際の画像（base64推奨）に差し替える
+      2. <!-- BOTTOM_TEXT_HERE --> を以下いずれかのテンプレートで差し替える
+         - テンプレートA（招待状）: 固定文言を使用
+         - テンプレートB（完成作品カード）: 作品名のみ
+      3. 背景色は .card の background を変更
+         - パーチメント版: var(--parchment) のまま
+         - 黒背景版: --deep に変更し、.brand-name / .invite-words の color も
+           var(--parchment) 系に変更（黒背景用の色はコメントで明記）
+      4. QRコードは <!-- QR_HERE --> を差し替える
+         - パーチメント背景には qr_black_on_parchment.png（黒地ゴールドQR）
+         - 黒背景には qr_gold_on_black.png（黒地ゴールドQR）
+      5. PNG書き出しは export_png.py を参照（playwright, device_scale_factor=5,
+         .card要素のみscreenshot、file://は使えないのでset_contentを使うこと）
+    ============================================================
+  -->
+  :root {
+    --deep: #1a1612;
+    --gold: #B8962E;
+    --gold-soft: rgba(184,150,46,0.55);
+    --parchment: #E8E0D0;
+    --burgundy: #6B1E2E;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #d9d2c2;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    font-family: 'Noto Serif JP', serif;
+  }
+  .card {
+    width: 420px;
+    aspect-ratio: 148 / 210;
+    background: var(--parchment); /* 黒背景版は var(--deep) に変更 */
+    position: relative;
+    box-shadow: 0 30px 70px rgba(20,16,12,0.35), 0 2px 10px rgba(20,16,12,0.15);
+    display: flex;
+    flex-direction: column;
+    padding: 34px 30px 28px;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 14px;
+    border: 1px solid var(--gold-soft);
+    pointer-events: none;
+  }
+  .brand-row {
+    text-align: center;
+    margin-bottom: 22px;
+    position: relative;
+    z-index: 2;
+  }
+  .brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 13px;
+    letter-spacing: 0.35em;
+    color: var(--deep); /* 黒背景版は var(--parchment) に変更 */
+    text-transform: uppercase;
+  }
+  .image-frame {
+    flex: 1;
+    position: relative;
+    border: 1px solid var(--gold);
+    box-shadow: 0 0 0 5px var(--parchment), 0 0 0 6px rgba(184,150,46,0.25);
+    /* 黒背景版は box-shadow の var(--parchment) を var(--deep) に変更 */
+    overflow: hidden;
+    background: var(--deep);
+  }
+  .image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .footer-row {
+    margin-top: 22px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+  }
+  .invite-words {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    line-height: 1.9;
+    color: #4a4338; /* 黒背景版は rgba(232,224,208,0.75) に変更 */
+    max-width: 220px;
+  }
+  .invite-words .jp {
+    font-family: 'Noto Serif JP', serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--deep); /* 黒背景版は var(--parchment) に変更 */
+    display: block;
+    margin-bottom: 6px;
+  }
+  .qr-block {
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .qr-block img {
+    width: 56px;
+    height: 56px;
+    display: block;
+  }
+  .qr-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 6.5px;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-top: 5px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="brand-row">
+      <div class="brand-name">En Rilievo NEJICO</div>
+    </div>
+    <div class="image-frame">
+      <!-- IMAGE_HERE: <img src="data:image/jpeg;base64,...." alt="作品名"> -->
+      <img src="" alt="作品画像をここに">
+    </div>
+    <div class="footer-row">
+      <!-- BOTTOM_TEXT_HERE -->
+      <!--
+        【テンプレートA: 招待状の場合】
+        <p class="invite-words">
+          <span class="jp">ひと針に　宿る、世界。</span>
+          Not for sale —<br>a glimpse into the atelier.
+        </p>
+
+        【テンプレートB: 完成作品カードの場合（作品名のみ）】
+        <p class="invite-words">
+          <span class="jp">桜　Sakura</span>
+          Dimensional Embroidery
+        </p>
+        ※ Bは価格・素材・仕様を載せない。作品名（和文＋英文）のみで構成する。
+      -->
+      <p class="invite-words">
+        <span class="jp">ひと針に　宿る、世界。</span>
+        Not for sale —<br>a glimpse into the atelier.
+      </p>
+      <div class="qr-block">
+        <!-- QR_HERE: <img src="data:image/png;base64,...."> -->
+        <img src="" alt="QRコードをここに">
+        <div class="qr-label">View Online</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
